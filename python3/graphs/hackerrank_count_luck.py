@@ -7,12 +7,7 @@ def countLuck(matrix, k):
         return [
             (row, col)
             for row, col in indices
-            if is_valid(matrix, row, col)
-            and (
-                matrix[row][col] == "."
-                or matrix[row][col] == "*"
-                or matrix[row][col] == "M"
-            )
+            if is_valid(matrix, row, col) and (matrix[row][col] in [".", "*", "M"])
         ]
 
     def find(s):
