@@ -24,7 +24,6 @@ def countLuck(matrix, k):
         return path
 
     def count_points(coords):
-
         count = 0
         for row, col in coords:
             if (row, col) == end:
@@ -41,9 +40,9 @@ def countLuck(matrix, k):
 
     visited = set()
     parent = {}
-    queue = [M]
-    while queue:
-        r, c = queue.pop()
+    stack = [M]
+    while stack:
+        r, c = stack.pop()
         visited.add((r, c))
         if matrix[r][c] == "*":
             path = backtrace(parent, M, end)
@@ -52,7 +51,7 @@ def countLuck(matrix, k):
         nbs = neighbors(matrix, r, c)
         for row, col in nbs:
             if (row, col) not in visited:
-                queue.append((row, col))
+                stack.append((row, col))
                 parent[(row, col)] = (r, c)
 
     if p == k:
