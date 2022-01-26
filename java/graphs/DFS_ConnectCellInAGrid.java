@@ -33,9 +33,9 @@ public class DFS_ConnectCellInAGrid {
         }
 
         /*
-         * maxRegion method in hackerrank interactive window takes arg:
+         * maxRegion method in the hackerrank interactive window takes arg:
          * List<List<Integer>> gridList
-         * so transformation to nested arrays is required, for example:
+         * so transformation to a nested array is required, for example:
          * 
          * int[][] grid = new int[gridList.size()][];
          * for(int i=0; i<gridList.size(); i++){
