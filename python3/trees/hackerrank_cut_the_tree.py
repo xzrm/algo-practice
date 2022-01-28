@@ -28,24 +28,21 @@ def cutTheTree(data, edges):
 def def_trees(edges, del_edge):
     edges.remove(del_edge)
     p_1, p_2 = del_edge
-    edges_1 = []
-    edges_2 = []
-    node_ids = [i for i in range(1, len(edges) + 2)]
     edges = [tuple(i) for i in edges]
 
     def find_edges(edges, parent):
-        found_edges = [i for i in edges if i[0] == parent]
+        found_edges = [i for i in edges if parent in i]
         new_edges = list(set(edges) - set(found_edges))
-        children = [i[1] for i in found_edges]
-        for ch in children:
-            found_edges += edges(new_edges, ch)
+        new_vals = set([num for i in found_edges for num in i]) - set([parent])
+        for ch in new_vals:
+            found_edges += find_edges(new_edges, ch)
         return found_edges
 
-    print(find_edges(edges, del_edge[2]))
+    print(find_edges(edges, del_edge[0]))
 
 
 data = [100, 200, 100, 500, 100, 600]
-edges = [[1, 2], [2, 3], [2, 5], [4, 5], [5, 6]]
+edges = [[1, 2], [2, 3], [2, 5], [4, 5], [5, 6], [7, 1], [8, 7], [9, 7]]
 
 # cutTheTree(data, edges)
 def_trees(edges, [2, 5])
